@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13168.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="PYU-41-8EN">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13147.4"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Checkbox-->
+        <scene sceneID="vid-ns-VXn">
+            <objects>
+                <viewController storyboardIdentifier="Checkbox" id="PYU-41-8EN" customClass="Checkbox" customModule="Did_Select_Row" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ymI-Qe-097"/>
+                        <viewControllerLayoutGuide type="bottom" id="YPr-tm-C8o"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6v9-KY-EOA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Awd-vn-cq2">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Customcell" rowHeight="80" id="JLm-T5-JGa" customClass="Customcell" customModule="Did_Select_Row" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="80"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JLm-T5-JGa" id="Gtq-eN-Hg5">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vap-6J-jKf">
+                                                    <rect key="frame" x="30" y="30" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NvA-yQ-dH4">
+                                                    <rect key="frame" x="292" y="20" width="45" height="39"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="39" id="DnT-Ma-0Vv"/>
+                                                    </constraints>
+                                                    <state key="normal" title="not check" image="uncheck1"/>
+                                                    <state key="selected" title="check" image="checkmark"/>
+                                                    <connections>
+                                                        <action selector="checkboxUIButton:" destination="PYU-41-8EN" eventType="touchUpInside" id="nZI-cJ-dgU"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="vap-6J-jKf" firstAttribute="leading" secondItem="Gtq-eN-Hg5" secondAttribute="leading" constant="30" id="Dsj-aB-1BP"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="vap-6J-jKf" secondAttribute="trailing" constant="20" symbolic="YES" id="MAe-uX-mdn"/>
+                                                <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="NvA-yQ-dH4" secondAttribute="trailing" constant="30" id="TGr-30-qJc"/>
+                                                <constraint firstItem="vap-6J-jKf" firstAttribute="centerY" secondItem="Gtq-eN-Hg5" secondAttribute="centerY" id="lRP-KV-4lJ"/>
+                                                <constraint firstItem="NvA-yQ-dH4" firstAttribute="centerY" secondItem="Gtq-eN-Hg5" secondAttribute="centerY" id="riy-dw-h9I"/>
+                                                <constraint firstItem="NvA-yQ-dH4" firstAttribute="leading" secondItem="Gtq-eN-Hg5" secondAttribute="leading" constant="292" id="xeb-9u-IvV"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="checkboxUIButton" destination="NvA-yQ-dH4" id="lYQ-Kk-J1r"/>
+                                            <outlet property="foodUILabel" destination="vap-6J-jKf" id="VXV-0D-ORJ"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Awd-vn-cq2" firstAttribute="leading" secondItem="6v9-KY-EOA" secondAttribute="leading" id="AfX-2u-kn8"/>
+                            <constraint firstAttribute="trailing" secondItem="Awd-vn-cq2" secondAttribute="trailing" id="gPc-KC-8pI"/>
+                            <constraint firstItem="Awd-vn-cq2" firstAttribute="top" secondItem="ymI-Qe-097" secondAttribute="bottom" id="oIV-Z2-Dpl"/>
+                            <constraint firstItem="YPr-tm-C8o" firstAttribute="top" secondItem="Awd-vn-cq2" secondAttribute="bottom" id="xAH-3g-5aF"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="checkboxTableView" destination="Awd-vn-cq2" id="qbS-Yu-7cf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jLX-3s-fzn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="448.80000000000001" y="-320.68965517241384"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="checkmark" width="225" height="225"/>
+        <image name="uncheck1" width="225" height="225"/>
+    </resources>
+</document>
