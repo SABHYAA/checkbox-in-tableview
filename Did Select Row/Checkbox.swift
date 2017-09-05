@@ -9,30 +9,46 @@
 import UIKit
 
 class Checkbox: UIViewController {
-
+    
     @IBOutlet var checkboxTableView: UITableView!
-    @IBAction func checkboxUIButton(_ sender: UIButton) {
-        sender.isSelected = !sender.isSelected
-        
-    }
+    
     var food = ["pizza", "burger", "coldinks", "icecream"]
+    var selectIdx = -1
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         self.checkboxTableView.dataSource = self
         self.checkboxTableView.delegate = self
+        
     }
-//    @IBAction func checkboxUIButton(_ sender: UIButton) {
-//        sender.isSelected = !sender.isSelected
-//    }
-    
+
    
+    // Do any additional setup after loading the view.
     
-}
+    //    @IBAction func checkboxUIButton(_ sender: UIButton) {
+    //        sender.isSelected = !sender.isSelected
+    //    }
+    
+func checkboxUIButton(_ sender: UIButton) {
+    
+    var cellView = sender.superview
+    while !(cellView is UITableViewCell){
+        cellView = cellView!.superview
+    }
+    let cell = cellView as! UITableViewCell
+    let indexPath = self.checkboxTableView.indexPath(for: cell)
+    
+    self.selectIdx = indexPath?.row ?? -1
+    
+    self.checkboxTableView.reloadData()
+    }
+    
+ }
+
 extension Checkbox: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return food.count
+        return food.count + 100
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -41,17 +57,42 @@ extension Checkbox: UITableViewDataSource, UITableViewDelegate {
                 fatalError()
                 
         }
-        cell.foodUILabel?.text = food[indexPath.row]
-        return cell
+        cell.foodUILabel?.text = food[indexPath.row%4]
+        
+        if self.selectIdx == indexPath.row{
+            cell.checkboxUIButton.setImage(UIImage(named: "checkmark"), for: .normal)
+        }else{
+            cell.checkboxUIButton.setImage(UIImage(named: "uncheck1"), for: .normal)
+        }
+
+    return cell
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 150
     }
-}
-    class Customcell: UITableViewCell {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        @IBOutlet var foodUILabel: UILabel!
-       
-        @IBOutlet weak var checkboxUIButton: UIButton!
+        self.selectIdx = indexPath.row
+        self.checkboxTableView.reloadData()
+    }
 }
+
+class Customcell: UITableViewCell {
+    
+    @IBOutlet var foodUILabel: UILabel!
+    @IBOutlet weak var checkboxUIButton: UIButton!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+    }
+    
+    //        override func layoutSubviews() {
+    //            super.layoutSubviews()
+    //        }
+}
+
